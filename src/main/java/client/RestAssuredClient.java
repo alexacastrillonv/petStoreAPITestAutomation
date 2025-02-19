@@ -2,6 +2,7 @@ package client;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import net.serenitybdd.rest.SerenityRest;
 
 public abstract class RestAssuredClient {
     String baseUrl;
@@ -11,13 +12,13 @@ public abstract class RestAssuredClient {
     }
 
     public Response get(String path) {
-        return RestAssured.given().log().all(true)
+        return SerenityRest.given().log().all(true)
                 .baseUri(baseUrl)
                 .header("Content-Type", "application/json").get(path);
     }
 
     public Response post(String path, String body) {
-        return RestAssured.given().log().all(true)
+        return SerenityRest.given().log().all(true)
                 .baseUri(baseUrl)
                 .header("Content-Type", "application/json")
                 .body(body)
@@ -26,7 +27,7 @@ public abstract class RestAssuredClient {
     }
 
     public Response put(String path, String body) {
-        return RestAssured.given().log().all(true)
+        return SerenityRest.given().log().all(true)
                 .baseUri(baseUrl)
                 .contentType("application/json")
                 .accept("application/json")
@@ -35,7 +36,7 @@ public abstract class RestAssuredClient {
     }
 
     public Response patch(String path, String body) {
-        return RestAssured.given().log().all(true)
+        return SerenityRest.given().log().all(true)
                 .baseUri(baseUrl)
                 .contentType("application/json")
                 .accept("application/json")
@@ -44,7 +45,7 @@ public abstract class RestAssuredClient {
     }
 
     public Response delete(String path) {
-        return RestAssured.given().log().all(true)
+        return SerenityRest.given().log().all(true)
                 .baseUri(baseUrl)
                 .contentType("application/json")
                 .delete(path);

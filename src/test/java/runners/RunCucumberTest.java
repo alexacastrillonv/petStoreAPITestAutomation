@@ -7,19 +7,18 @@ import models.Request.Category;
 import models.Request.PetRequest;
 import models.Request.Tags;
 import models.Request.UserRequest;
+import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@RunWith(Cucumber.class)
+@RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        plugin = {"pretty", "html:target/cucumber-reports"},
-        monochrome = true,
-        dryRun=true
+        plugin = {"pretty"}
 )
 public class RunCucumberTest {
     @DataTableType
