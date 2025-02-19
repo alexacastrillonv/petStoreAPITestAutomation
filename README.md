@@ -60,3 +60,27 @@ The User API tests cases are divided into the following scenarios:
 5. Delete user by username
 6. User not 
 7. User not found
+
+# Performance Tests
+
+run the performance tests with the following command:
+
+```
+docker build . -t dock-k6 
+ocker run --rm dock-k6 run petStore.js 
+```
+
+## Analisys performance get pet by status
+![img.png](img.png)
+
+# Response Times (Latency): 
+some requests take up to 5.68 seconds, which is too slow for high-performance applications.
+
+# Failed Requests
+* 33.82% of requests failed, which is a serious issue.
+* Likely linked to long response times, meaning requests are timing out or returning errors.
+
+# Request Rate and Load
+* Requests per second: ~571
+* Virtual users (vus): 100 max
+The server might be struggling to handle this load, leading to high failure rates.
