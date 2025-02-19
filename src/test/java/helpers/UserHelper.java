@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import config.PropertyManager;
 import io.restassured.response.Response;
+import models.Request.PetRequest;
 import models.Request.UserRequest;
 import models.Response.UserResponse;
 import org.slf4j.Logger;
@@ -34,4 +35,13 @@ public class UserHelper extends RestAssuredClient {
         return post(PropertyManager.getProperty("createUserPath"), userRequest);
 
     }
+
+    public Response getUserByUsername(String username){
+        return get(PropertyManager.getProperty("getUserByUsernamePath").replace("{username}", username));
+    }
+
+    public Response deleteUserByUsername(String username){
+        return delete(PropertyManager.getProperty("deleteUserByUsernamePath").replace("{username}", username));
+    }
+
 }
